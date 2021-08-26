@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
+
+from numpy import isnan
 from tests import MODEL_DIR, INPUT_DIR, OUTPUT_DIR, EXAMPLE_DIR, EXAMPLE_OUTDIR
 from os.path import isfile, join
 from sample_annotator import SampleAnnotator
@@ -49,6 +51,25 @@ class TestAnnotate(unittest.TestCase):
             output_samples.append(report.output)
             df = report.as_dataframe()
             #print(df)
+            
+            if t.get('output') is not None:
+                for key in t.get('output').keys():
+                    # In case of output = dict of dicts
+                    if type(t.get('output')[key]) == dict:
+                        if t.get('output')[key].keys() == report.output[key].keys():
+                            assert t.get('output')[key] == report.output[key]
+                        else:
+                            for subkey in t.get('output')[key].keys():
+                                assert t.get('output')[key][subkey] == report.output[key][subkey]
+
+                            # These are keys whose values are None
+                            none_keys = report.output[key].keys() - t.get('output')[key].keys() 
+                            for none_key in none_keys:
+                                assert report.output[key][none_key] is None
+                    # If output is just a dict
+                    else:
+                        assert t.get('output')[key] == report.output[key]
+                        
 
             if 'must_pass' in t:
                 assert report.passes() == t.get('must_pass')

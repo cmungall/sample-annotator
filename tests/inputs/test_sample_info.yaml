@@ -8,9 +8,16 @@ tests:
     # this is what is expected in the repaired blob
     output:
       alt:
-        has_value: 2.0
-        has_unit: meter
+        has_numeric_value: 2.0
+        has_unit: metre
         has_raw_value: 2m
+      lat_lon:
+        latitude: 68.3534
+        longitude: 19.0472
+      tot_part_carb:
+        has_numeric_value: 5
+        has_raw_value: '5'
+
     must_pass: false
     expected_failures:
       missing-core: ">0"
@@ -34,4 +41,31 @@ tests:
       lat_lon: 37.931388399999996 -122.0239394
     must_pass: false
     expected_failures: {}
+  - description: TEST(NER)
+    sample:
+      id: TEST:NER_1
+      description: It was found in water.
+      env_broad_scale: aquatic biome
+      env_local_scale: coal mine
+      env_medium: underground water
+    # this is what is expected in the output
+    output:
+      env_broad_scale: ENVO:00002030
+      env_local_scale: ENVO:00002169
+      env_medium: ENVO:00005792
+    expected_failures: {}
+  - description: TEST(NER)
+    sample:
+      id: TEST:NER_2
+      env_broad_scale: terrestrial biome
+      env_local_scale: oil reservoir
+      env_medium: oil
+    must_pass: false
+    # this is what is expected in the output
+    output:
+       env_broad_scale: ENVO:00000446
+       env_local_scale: ENVO:00002185
+       env_medium: ENVO:00002985
+    expected_failures: {}
+
 

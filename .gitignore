@@ -98,4 +98,7 @@ tests/test_config.ini
 
 # Don't lock
 Pipfile.lock
+
 sphinx/_build/*
+sample_annotator/text_mining/settings.ini
+sample_annotator/text_mining/input/*

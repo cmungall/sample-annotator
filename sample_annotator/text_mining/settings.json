@@ -1,0 +1,18 @@
+{
+    "Main": {
+        "include_header" : true,
+        "pointer-type" : "glob",
+        "pointers" : "*.tsv",
+        "iter-mode" : "collection",
+        "article-format" : "txt_tsv",
+        "export_format": "tsv",
+        "termlist_normalize": "lowercase stem-Porter"
+
+    },
+    "Relative-Path": {
+        "input-dir": "input",
+        "output-dir": "output",
+        "stopwords": "stopwords/stopWords.txt"
+    }
+        
+}

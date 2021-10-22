@@ -16,3 +16,6 @@ $(SAMPLE_SCHEMA_JSON): $(SAMPLE_SCHEMA_YAML)
 test:
 	pipenv install --dev
 	pipenv run python -m unittest
+
+app:
+	$(RUN) uvicorn sample_annotator.app.main:app --reload

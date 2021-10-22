@@ -23,7 +23,7 @@ STUDY = Dict[str, Any]
 SCORE = float
 
 @unique
-class Category(Enum):
+class Category(str, Enum):
     Unclassified = 'unclassified'
     Core = 'core'
     Geo = 'geo'

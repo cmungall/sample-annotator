@@ -19,6 +19,7 @@ sphinx-rtd-theme = "*"
 recommonmark = "*"
 diskcache = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+fastapi = "*"
 
 [dev-packages]
 tox = "*"

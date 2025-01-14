@@ -362,9 +362,7 @@ class GoldNMDC(GoldClient):
                         part_of=study_id,
                         ncbi_taxonomy_name=ncbi_tax_name,
                         samp_taxon_id=samp_taxon_id,
-                        samp_name=nmdc.TextValue(has_raw_value=field_site)
-                        if field_site
-                        else None,
+                        samp_name=field_site if field_site else None,
                         type="nmdc:Biosample",
                         img_identifiers=img_identifiers,
                         # biosample date information
@@ -442,7 +440,13 @@ class GoldNMDC(GoldClient):
                         )
                         if biosample["geoLocation"]
                         else None,
-                        lat_lon=nmdc.TextValue(
+                        lat_lon=nmdc.GeolocationValue(
+                            latitude=nmdc.DecimalDegree(
+                                biosample.get("latitude")
+                            ),
+                            longitude=nmdc.DecimalDegree(
+                                biosample.get("longitude")
+                            ),
                             has_raw_value=str(biosample.get("latitude"))
                             + " "
                             + str(biosample.get("longitude"))

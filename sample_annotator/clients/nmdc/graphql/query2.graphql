@@ -1,0 +1,14 @@
+# Get data products based on the releaseTag value supplied in the query parameters
+
+query Products ($release: String!) {
+  products (release: $release) {
+    productCode
+    productName
+    productDescription
+    releases {
+      release
+      generationDate
+      url
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Get one or many data products with availability information.
+
+query Product ($productCode: String!) {
+  product (productCode: $productCode) {
+    productCode
+    productName
+    siteCodes {
+      siteCode
+    }
+  }
+}

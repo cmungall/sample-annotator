@@ -1,0 +1,9 @@
+# Get all products and include the product code, name, and description for each
+
+query Products {
+  products {
+    productCode
+    productName
+    productDescription
+  }
+}

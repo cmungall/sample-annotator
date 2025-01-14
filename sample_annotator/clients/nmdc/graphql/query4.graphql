@@ -1,0 +1,12 @@
+# Get a data product and filter by availability
+
+query filterProducts ($filter: DataProductFilter!) {
+  products: filterProducts(filter: $filter) {
+    productCode
+    productName
+    productDescription
+    siteCodes {
+      siteCode
+    }
+  }
+}

@@ -40,3 +40,46 @@ tests:
       text: bill clinton
     output:
       text: Bill Clinton
+  - description: missing space 1
+    sample:
+      id: TEST:missing_space1
+      text: 400g/L
+    output:
+      text: 400 g/L
+  - description: missing space 2
+    sample:
+      id: TEST:missing_space2
+      text: 1%
+    output:
+      text: 1 %
+  - description: categorical vs numerical
+    sample:
+      id: TEST:cat_vs_num
+      text: Halophile
+    output:
+      text: NaN
+  - description: capital units
+    sample:
+      id: TEST:cap_units
+      text: 0.2 psu
+    output:
+      text: 0.2 PSU
+  - description: capital units and space
+    sample:
+      id: TEST:cap_units_and_space
+      text: 0.2psu
+    output:
+      text: 0.2 PSU
+  - description: plus minus error
+    sample:
+      id: TEST:plus_min_error
+      text: 17.3 +/- 2.0 PPT
+    output:
+      text: NaN
+  - description: with unit description
+    sample:
+      id: TEST:with_unit_descr
+      text: 40 PSU (practical salinity units)
+    output:
+      text: 40 PSU
+

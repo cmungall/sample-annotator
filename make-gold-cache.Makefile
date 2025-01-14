@@ -50,3 +50,21 @@ load-gold-biosamples-into-mongo: local/gold-study-ids-subset.txt
 #		--project-output-file local/gold-projects-only.json \
 #		--remove-contacts \
 #		--remove-nulls
+
+local/ecosystems_and_triads.tsv:
+	poetry run python sample_annotator/ecosystems_and_triads_from_mongo.py \
+		--host localhost \
+		--port 27017 \
+		--db-name gold_metadata \
+		--collection-name biosamples \
+		--output-file $@
+
+
+local/seq_projects.tsv:
+	poetry run python sample_annotator/seq_projects_from_mongo.py \
+		--host localhost \
+		--port 27017 \
+		--db-name gold_metadata \
+		--collection-name projects \
+		--output-file $@
+

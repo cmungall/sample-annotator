@@ -159,6 +159,11 @@ class GoldClient:
         id = self._normalize_id(id)
         logging.info(f"Fetching study: {id}")
         results = self._call("studies", {"studyGoldId": id})
+
+        if not results:
+            logging.warning(f"No study found for ID: {id}")
+            return {}  # or None?
+
         study = results[0]
         if include_biosamples:
             study["biosamples"] = self.fetch_biosamples_by_study(id)

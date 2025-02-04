@@ -13,6 +13,9 @@ googlemaps-api-key.txt
 bin
 
 cachedir
+
+sample_annotator/cache/
+
 examples/outputs
 
 temp/
